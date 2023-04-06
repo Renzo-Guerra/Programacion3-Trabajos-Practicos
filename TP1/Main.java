@@ -42,7 +42,11 @@ public class Main {
 		lista4.insertFront(55);
 
 		System.out.println("Lista resultante del ejercicio 6 B:");
-    System.out.println(combinarListasOrdenadas(lista3, lista4) + "\n");    
+    System.out.println(combinarListasOrdenadas(lista3, lista4) + "\n");   
+		
+		System.out.println("Lista resultante del ejercicio 7:");
+    System.out.println(getElementosDiferentes(lista1, lista2) + "\n");   
+		
 	}
 
   /**
@@ -96,4 +100,23 @@ public class Main {
 		
 		return lista_dev;
 	}
+
+	/**
+	 * Dadas 2 listas (MiLista) devuelve otra con los elementos que están en la lista_A pero no en lista_B.
+	 * @param lista_A (MiLista) posibles numeros a devolver
+	 * @param lista_B (MiLista) numeros con los que se compara
+	 * @return MiLista
+	 */
+	public static MiLista<Integer> getElementosDiferentes(MiLista<Integer> lista_A, MiLista<Integer> lista_B){
+		MiLista<Integer> lista_dev = new MiLista<Integer>(new ComparadorInteger());
+		
+		lista_A.forEach((el)->{
+			if(lista_B.indexOf(el) == -1) {
+				lista_dev.insertFront(el);
+			}
+		});
+				
+		return lista_dev;
+	}
+
 }
