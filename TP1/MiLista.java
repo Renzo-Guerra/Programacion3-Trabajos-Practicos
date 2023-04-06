@@ -85,6 +85,29 @@ public class MiLista<T> {
 		return devolver.toString();
 	}
 
+	/**
+	 * Dado un elemento, devuelve la posicion de la primera ocurrencia.
+	 * @param dataBuscar elemento a buscar.
+	 * @return (int) pos elemento || -1.
+	 */
+	public int indexOf(T dataBuscar) {
+		if(this.isEmpty()) {return -1;}
+		
+		int indexActual = 0;
+		Nodo<T> aux = this.primero;
+		
+		while(aux.getData() != dataBuscar) {
+			if(aux.getSiguiente() == null) {
+				return -1;
+			}
+			
+			indexActual++;
+			aux = aux.getSiguiente();
+		}
+		
+		return indexActual;
+	}
+
 	@Override
 	public String toString() {
 		return this.getElementos();
