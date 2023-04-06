@@ -1,14 +1,17 @@
 package TP1;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class MiLista<T> implements Iterable<T>{
-	protected Nodo<T> primero;
-	protected int size;
-	
-	public MiLista(){
+	private Nodo<T> primero;
+	private int size;
+	private Comparator comparador;
+
+	public MiLista(Comparator comparador){
 		this.primero = null;
 		this.size = 0;
+		this.comparador = comparador;
 	}
 	
 	/**
@@ -106,6 +109,30 @@ public class MiLista<T> implements Iterable<T>{
 		}
 		
 		return indexActual;
+	}
+
+	public void insertarOrdenado(T data) {
+		if(this.isEmpty() || (this.comparador.compare(this.primero.getData(), data) >= 0)) {
+			this.insertFront(data);
+		}else{
+			Nodo<T> anterior = this.primero;
+			Nodo<T> actual = this.primero.getSiguiente();
+			Nodo<T> nuevoNodo;
+			this.size++;
+			while(actual != null) {
+				if(this.comparador.compare(actual.getData(), data) >= 0){
+					nuevoNodo = new Nodo<T>(data, null);
+					nuevoNodo.setSiguiente(actual);
+					anterior.setSiguiente(nuevoNodo);
+					return;
+				}
+				
+				anterior = actual;
+				actual = actual.getSiguiente();
+			}
+			nuevoNodo = new Nodo<T>(data, null);
+			anterior.setSiguiente(nuevoNodo);
+		}
 	}
 
 	@Override

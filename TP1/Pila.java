@@ -4,7 +4,7 @@ public class Pila<T>{
 	private MiLista<T> estructura;
 	
 	public Pila() {
-		this.estructura = new MiLista<T>();
+		this.estructura = new MiLista<T>(new ComparadorInteger());
 	}
 	
   /**
@@ -40,7 +40,7 @@ public class Pila<T>{
    */
 	public void reverse() {
 		if(!this.estructura.isEmpty()) {			
-			MiLista<T> inversa = new MiLista<T>();
+			MiLista<T> inversa = new MiLista<T>(new ComparadorInteger());
 			while(!this.estructura.isEmpty()) {
 				inversa.insertFront(this.estructura.extractFront());
 			}
