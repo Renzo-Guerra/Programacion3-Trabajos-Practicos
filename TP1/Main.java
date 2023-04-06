@@ -25,9 +25,24 @@ public class Main {
     System.out.println(lista1 + "\n");
     System.out.println("Lista 2:");
     System.out.println(lista2 + "\n");
-    System.out.println("Lista combinada:");
+    System.out.println("Lista resultante del ejercicio 6 A:");
     System.out.println(combinarListas(lista1, lista2) + "\n");
     
+		MiLista<Integer> lista3 = new MiLista<Integer>(new ComparadorInteger<>());
+		MiLista<Integer> lista4 = new MiLista<Integer>(new ComparadorInteger<>());
+		
+		lista3.insertFront(11);
+		lista3.insertFront(22);
+		lista3.insertFront(33);
+		lista3.insertFront(45);
+
+		lista4.insertFront(1);
+		lista4.insertFront(3);
+		lista4.insertFront(12);
+		lista4.insertFront(55);
+
+		System.out.println("Lista resultante del ejercicio 6 B:");
+    System.out.println(combinarListasOrdenadas(lista3, lista4) + "\n");    
 	}
 
   /**
@@ -67,14 +82,14 @@ public class Main {
 		}
 
     // No sabemos si tanto it_A como it_B aun tienen elementos restantes
-		if(it_A.next() != null) {
+		if(it_A.hasNext()) {
 			while(it_A.hasNext()) {
 				lista_dev.insertFront(it_A.next());
 			}
 		}
 		
-		if(it_B.next() != null) {
-			while(it_B.next() != null) {
+		if(it_B.hasNext()) {
+			while(it_B.hasNext()) {
 				lista_dev.insertFront(it_B.next());
 			}
 		}
