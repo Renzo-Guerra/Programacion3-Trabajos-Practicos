@@ -1,4 +1,4 @@
-package TP1;
+package TP1.ParteDeListas;
 
 public class NodoDoble<T> {
   private T data;

@@ -1,7 +1,6 @@
-package TP1;
+package TP1.ParteDeListas;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class MiListaDoble<T> implements Iterable<T>{
   private NodoDoble<T> primero;
@@ -22,6 +21,7 @@ public class MiListaDoble<T> implements Iterable<T>{
   public T extractFront(){
     T data = this.primero.getData();
     this.primero = this.primero.getSiguiente();
+    this.primero.setAnterior(null);
     this.size--;
 
     return data;
@@ -53,11 +53,10 @@ public class MiListaDoble<T> implements Iterable<T>{
 	private String getElementos(){
 		ArrayList<T> devolver = new ArrayList<T>();
 		
-		NodoDoble<T> aux = this.primero;
+		IteradorMiListaDoble<T> it = this.iterator();
 
-		while(aux != null){
-			devolver.add(aux.getData());
-			aux = aux.getSiguiente();
+		while(it.hasNext()){
+			devolver.add(it.next());
 		}
 
 		return devolver.toString();

@@ -1,4 +1,4 @@
-package TP1;
+package TP1.ParteDeListas;
 
 public class Pila<T>{
 	private MiLista<T> estructura;
