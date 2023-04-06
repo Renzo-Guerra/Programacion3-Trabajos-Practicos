@@ -2,7 +2,7 @@ package TP1;
 
 import java.util.ArrayList;
 
-public class MiLista<T> {
+public class MiLista<T> implements Iterable<T>{
 	protected Nodo<T> primero;
 	protected int size;
 	
@@ -111,5 +111,11 @@ public class MiLista<T> {
 	@Override
 	public String toString() {
 		return this.getElementos();
+	}
+
+	// Devuelvo el tipo IteradorMiLista en vez de Iterator porque mas adelante me va a molestar
+	@Override
+	public IteradorMiLista<T> iterator() {
+		return new IteradorMiLista<>(this.primero); 
 	}
 }
