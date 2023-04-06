@@ -26,5 +26,9 @@ public class IteradorMiLista<T> implements Iterator<T>{
 
     return aux;
   }
+
+  public T currentValue(){
+    return this.nodo.getData();
+  }
   
 }

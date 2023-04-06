@@ -49,4 +49,36 @@ public class Main {
 		return lista_dev;
 	}
 
+  public static MiLista<Integer> combinarListasOrdenadas(MiLista<Integer> lista_A, MiLista<Integer> lista_B){
+		MiLista<Integer> lista_dev = new MiLista<Integer>(new ComparadorInteger());
+		
+		IteradorMiLista<Integer> it_A = lista_A.iterator();
+		IteradorMiLista<Integer> it_B = lista_B.iterator();
+		
+		while(it_A.hasNext() && it_B.hasNext()) {
+			if(it_A.currentValue() == it_B.currentValue()) {
+				lista_dev.insertFront(it_A.next());
+				lista_dev.insertFront(it_B.next());
+			}else if(it_A.currentValue() > it_B.currentValue()) {
+				lista_dev.insertFront(it_A.next());
+			}else {
+				lista_dev.insertFront(it_B.next());
+			}
+		}
+
+    // No sabemos si tanto it_A como it_B aun tienen elementos restantes
+		if(it_A.next() != null) {
+			while(it_A.hasNext()) {
+				lista_dev.insertFront(it_A.next());
+			}
+		}
+		
+		if(it_B.next() != null) {
+			while(it_B.next() != null) {
+				lista_dev.insertFront(it_B.next());
+			}
+		}
+		
+		return lista_dev;
+	}
 }
