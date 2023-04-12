@@ -1,5 +1,8 @@
 package TP1.ParteDeRecursion;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Main {
   public static void main(String[] args) {
     // Ejercicio 9
@@ -8,6 +11,12 @@ public class Main {
     System.out.println("Testing del ejercicio 9: ");
     System.out.println(palabra1 + " es capicua: " + esCapicua(palabra1));
     System.out.println(palabra2 + " es capicua: " + esCapicua(palabra2) + "\n");
+    
+
+    // Ejercicio 10
+    int[] arr1 = {1, 2, 3, 4, 8};
+    System.out.println("Testing del ejercicio 10: ");
+    System.out.println("El arreglo está ordenado: " + arregloOrdenadoAsc(arr1));
   }
 
   /**
@@ -26,4 +35,21 @@ public class Main {
       }
     }
   }
+  
+  public static boolean arregloOrdenadoAsc(int[] arr){
+    if(arr.length <= 1){
+      return true;
+    }else{
+      // Se compara la posicion 0 con la posicion 1;
+      if((arr[arr.length - arr.length]) < (arr[arr.length - arr.length + 1])){
+        // Se crea una copia del arreglo, solo que No se incluye el de la posicion 0.
+        int[] newArr = Arrays.copyOfRange(arr, 1, arr.length);
+        
+        return (true == arregloOrdenadoAsc(newArr));
+      }else{
+        return false;
+      }
+    }
+  }
+
 }

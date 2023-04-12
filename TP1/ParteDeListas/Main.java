@@ -62,8 +62,11 @@ public class Main {
      *  El forEach seria un "Por cada elemento dentro de 'lista_A' asignale el valor 'el_A' 
      * y ejecuta lo que esta despues de "->" por cada elemento que tenga la 'lista_A'. 
     */
-		lista_A.forEach(el_A -> lista_dev.insertarOrdenado(el_A));
-		lista_B.forEach(el_B -> lista_dev.insertarOrdenado(el_B));
+		lista_A.forEach(el_A -> {
+			if(lista_B.indexOf(el_A) != -1){
+				lista_dev.insertarOrdenado(el_A);
+			}
+		});
 		
 		return lista_dev;
 	}
