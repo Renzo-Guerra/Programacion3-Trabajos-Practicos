@@ -37,9 +37,9 @@ public class Main {
 		lista3.insertFront(45);
 
 		lista4.insertFront(1);
-		lista4.insertFront(3);
+		lista4.insertFront(33);
 		lista4.insertFront(12);
-		lista4.insertFront(55);
+		lista4.insertFront(45);
 
 		System.out.println("Lista resultante del ejercicio 6 B:");
     System.out.println(combinarListasOrdenadas(lista3, lista4) + "\n");   
@@ -73,31 +73,18 @@ public class Main {
 		
 		IteradorMiLista<Integer> it_A = lista_A.iterator();
 		IteradorMiLista<Integer> it_B = lista_B.iterator();
-		
+
 		while(it_A.hasNext() && it_B.hasNext()) {
 			if(it_A.currentValue() == it_B.currentValue()) {
 				lista_dev.insertFront(it_A.next());
-				lista_dev.insertFront(it_B.next());
+				it_B.next();
 			}else if(it_A.currentValue() > it_B.currentValue()) {
-				lista_dev.insertFront(it_A.next());
+				it_B.next();
 			}else {
-				lista_dev.insertFront(it_B.next());
+				it_A.next();
 			}
 		}
 
-    // No sabemos si tanto it_A como it_B aun tienen elementos restantes
-		if(it_A.hasNext()) {
-			while(it_A.hasNext()) {
-				lista_dev.insertFront(it_A.next());
-			}
-		}
-		
-		if(it_B.hasNext()) {
-			while(it_B.hasNext()) {
-				lista_dev.insertFront(it_B.next());
-			}
-		}
-		
 		return lista_dev;
 	}
 
