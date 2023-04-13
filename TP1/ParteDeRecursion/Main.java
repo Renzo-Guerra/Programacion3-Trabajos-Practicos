@@ -14,6 +14,11 @@ public class Main {
     int[] arr1 = {3, 2, 2, 4, 8};
     System.out.println("Testing del ejercicio 10: ");
     System.out.println("El arreglo está ordenado: " + arregloOrdenadoAsc(arr1, arr1.length));
+
+    // Ejercicio 11
+    int[] arrOrdenado = {1, 4, 12, 34, 58};
+    System.out.println("Testing del ejercicio 11: ");
+    System.out.println("El elemento se encuentra en la posicion: " + buscarEnArregloOrdenadoAsc(arrOrdenado, arrOrdenado.length, 0));
   }
 
   /**
@@ -49,5 +54,23 @@ public class Main {
       return arregloOrdenadoAsc(arr, --longitudActual);
     }
   }
-
+  
+  /**
+   * Dado un arreglo de enteros ordenados, se busca un elemnto y se devuelve su posicion.
+   * @param arr (integer) a indagar
+   * @param longitudActual (integer) del arreglo
+   * @param elem (integer) a buscar
+   * @return posicion del elemento en dicho arreglo, o -1 si no se encuentra.
+   */
+  public static int buscarEnArregloOrdenadoAsc(int[] arr, int longitudActual, int elem){  
+    if((longitudActual == 0) || (elem > arr[(longitudActual-1)])){
+      return -1;
+    }else{
+      if(arr[longitudActual-1] == elem){
+        return longitudActual-1;
+      }else{
+        return buscarEnArregloOrdenadoAsc(arr, --longitudActual, elem);
+      }
+    }
+  }
 }
