@@ -1,8 +1,5 @@
 package TP1.ParteDeRecursion;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Main {
   public static void main(String[] args) {
     // Ejercicio 9
@@ -14,9 +11,9 @@ public class Main {
     
 
     // Ejercicio 10
-    int[] arr1 = {1, 2, 3, 4, 8};
+    int[] arr1 = {3, 2, 2, 4, 8};
     System.out.println("Testing del ejercicio 10: ");
-    System.out.println("El arreglo está ordenado: " + arregloOrdenadoAsc(arr1));
+    System.out.println("El arreglo está ordenado: " + arregloOrdenadoAsc(arr1, arr1.length));
   }
 
   /**
@@ -36,19 +33,20 @@ public class Main {
     }
   }
   
-  public static boolean arregloOrdenadoAsc(int[] arr){
-    if(arr.length <= 1){
+  /*
+   * A- La complejidad es de O(n) donde n es la cantidad de elementos en el array
+   * B- Se debe pasar la longitud del arreglo como otro parametro, cosa de almacenar auxiliarmente el valor actual
+   * C- Se podria consultar el valor del nodo anterior o siguiente sin necesidad de llevar un auxiliar
+   */
+  public static boolean arregloOrdenadoAsc(int[] arr, int longitudActual){
+    if(longitudActual == 1 || longitudActual == 0){
       return true;
     }else{
-      // Se compara la posicion 0 con la posicion 1;
-      if((arr[arr.length - arr.length]) < (arr[arr.length - arr.length + 1])){
-        // Se crea una copia del arreglo, solo que No se incluye el de la posicion 0.
-        int[] newArr = Arrays.copyOfRange(arr, 1, arr.length);
-        
-        return (true == arregloOrdenadoAsc(newArr));
-      }else{
+      if((arr[longitudActual - 2]) > (arr[longitudActual - 1])){
         return false;
       }
+
+      return arregloOrdenadoAsc(arr, --longitudActual);
     }
   }
 
