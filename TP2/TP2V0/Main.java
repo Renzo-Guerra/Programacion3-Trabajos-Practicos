@@ -8,7 +8,8 @@ public class Main {
     System.out.println("Testing del ejercicio 1: ");
     System.out.println("Arreglo original: ");
     imprimirArreglo(arr);
-    ordSeleccion(arr);
+    // ordSeleccion(arr);
+    ordBurbujeo(arr);
     System.out.println("Arreglo ordenado: ");
     imprimirArreglo(arr);  
   }
@@ -51,5 +52,26 @@ public class Main {
       System.out.print(arr[i] + " | ");
     }
     System.out.println();
+  }
+
+  /**
+   * Dado un array de integers, los ordena de menor a mayor 
+   * utilizando el ordenamiento por burbujeo.
+   * 
+   * O(n^2) donde n es la cantidad de elementos
+   * @param numeros a ordenar
+   */
+  public static void ordBurbujeo(int[] numeros){
+    int aux;
+
+    for(int i=0;i<numeros.length-1;i++){
+      for(int j=i+1;j<numeros.length;j++){
+        if(numeros[i]>numeros[j]){
+          aux = numeros[i];      
+          numeros[i] = numeros[j];      
+          numeros[j] = aux;      
+        }
+      }
+    }
   }
 }
