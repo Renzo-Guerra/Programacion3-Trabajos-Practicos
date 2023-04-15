@@ -5,6 +5,9 @@
 * [Ejercicio 2](#ejercicio-2)
 * [Ejercicio 3](#ejercicio-3)
 
+## Links utiles de conseptos
+* [Merge Sort | Ordenamiento por mezcla](https://www.youtube.com/watch?v=ACFZn_xQcz8);
+
 ---
 
 ## Ejercicio 1

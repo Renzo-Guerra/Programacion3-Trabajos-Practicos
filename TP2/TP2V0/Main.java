@@ -9,7 +9,8 @@ public class Main {
     System.out.println("Arreglo original: ");
     imprimirArreglo(arr);
     // ordSeleccion(arr);
-    ordBurbujeo(arr);
+    // ordBurbujeo(arr);
+    new MergeSort(arr);
     System.out.println("Arreglo ordenado: ");
     imprimirArreglo(arr);  
   }
@@ -74,4 +75,5 @@ public class Main {
       }
     }
   }
+
 }
