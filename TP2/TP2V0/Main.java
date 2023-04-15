@@ -87,8 +87,19 @@ public class Main {
    */
   public static void ordQuickSort(int[] array, int lowIndex, int highIndex){
     // En caso de que solo haya 1 elemento, ese "subarreglo" estará ordenado
-    if(lowIndex >= highIndex){return;}
+    if(lowIndex < highIndex){
+      // Obtenemos el indice del pivote
+      int pivotIndex = partition(array, lowIndex, highIndex);  
+       
+      // Mandamos a hacer lo mismo con el subarray izquierdo;
+      ordQuickSort(array, lowIndex, pivotIndex-1);
+      
+      // Mandamos a hacer lo mismo con el subarray derecho;
+      ordQuickSort(array, pivotIndex+1, highIndex);
+    }
+  }
 
+  public static int partition(int[] array, int lowIndex, int highIndex){
     int pivotValue = array[highIndex];  // Por default el pivote es el ultimo elemento del arreglo
     int pivotIndex = lowIndex;          // Por default el indice del pivote es el otro extremo (El inicio)
     
@@ -102,14 +113,8 @@ public class Main {
     // Intercambiamos la posicion del pivote 
     // NOTA: Recordar que el pivote actualmente se encuentra en "highIndex"
     swapValues(array, pivotIndex, highIndex);
-    
     //* Ahora la posicion donde está el pivote es "pivotIndex"
-    
-    // Mandamos a hacer lo mismo con el subarray izquierdo;
-    ordQuickSort(array, lowIndex, pivotIndex-1);
-      
-    // Mandamos a hacer lo mismo con el subarray derecho;
-    ordQuickSort(array, pivotIndex+1, highIndex);
+    return pivotIndex;
   }
 
   /**
