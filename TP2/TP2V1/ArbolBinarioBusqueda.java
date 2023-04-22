@@ -54,6 +54,12 @@ public class ArbolBinarioBusqueda {
     return (this.root == null);
   }
 
+  public void insert(int[] values){
+    for(int i=0;i<values.length;i++){
+      this.insert(values[i]);
+    }
+  }
+
   public void insert(int newValue){
     if(this.root == null){
       this.root = newValue;
@@ -122,7 +128,7 @@ public class ArbolBinarioBusqueda {
     if(this.left != null)
       this.left.printInOrder();
     System.out.print(this.root + " | ");
-    if(this.left != null)
+    if(this.right != null)
       this.right.printInOrder();
   }
 

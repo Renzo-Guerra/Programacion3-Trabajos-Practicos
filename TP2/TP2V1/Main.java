@@ -3,12 +3,8 @@ package TP2.TP2V1;
 public class Main {
   public static void main(String[] args) {
     ArbolBinarioBusqueda arbol1 = new ArbolBinarioBusqueda(13);
-    arbol1.insert(4);
-    arbol1.insert(2);
-    arbol1.insert(7);
-    arbol1.insert(16);
-    arbol1.insert(50);
-    arbol1.insert(9);
+    int[] numeros = {4, 2, 7, 16, 50, 9};
+    arbol1.insert(numeros);
 
     System.out.println("InOrder: ");
     arbol1.printInOrder();
