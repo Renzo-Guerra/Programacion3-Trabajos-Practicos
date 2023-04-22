@@ -54,12 +54,20 @@ public class ArbolBinarioBusqueda {
     return (this.root == null);
   }
 
+  /**
+   * Inserta varios valores en el arbol (Los que no esten en el arbol)
+   * @param values (int[]) numeros a ingresar
+   */
   public void insert(int[] values){
     for(int i=0;i<values.length;i++){
       this.insert(values[i]);
     }
   }
 
+  /**
+   * Inserta un nuevo valor en el arbol
+   * @param newValue (int) numero a insertar
+   */
   public void insert(int newValue){
     if(this.root == null){
       this.root = newValue;
@@ -80,8 +88,163 @@ public class ArbolBinarioBusqueda {
     }
   }
 
-  public boolean delete(){
-    return true;
+  /**
+   * Asigna a "this" los valores del nodo izquierdo a "this",
+   * y le asigna null al subArbol "right" de "this".
+   */
+  private void auxDeleteNodoConHijoIzquierdo(){
+    this.root = this.left.root;
+    this.right = null;
+    this.left = this.left.right;
+  }
+
+  /**
+   * Asigna a "this" los valores del nodo derecho a "this",
+   * y le asigna null al subArbol "left" de "this".
+   */
+  private void auxDeleteNodoConHijoDerecho(){
+    this.root = this.right.root;
+    this.left = null;
+    this.right = this.right.right;
+  }
+
+  /**
+   * Retorna el Subarbol mas izquierdo del Arbol que invocó este metodo
+   * @return (ArbolBinarioBusqueda)
+   */
+  private ArbolBinarioBusqueda getNodoMasIzquierdo(){
+    if(this.root == null){
+      return null;
+    }else{
+      if(this.left != null)
+        this.left.getNodoMasIzquierdo();
+      return this;
+    }
+  }
+
+  /**
+   * Verifica si el Arbol es o no solo una hoja (tiene left y right como null) 
+   * @return (boolean)
+   */
+  private boolean esHoja(){
+    return (this.left == null && this.right == null);
+  }
+
+  /**
+   * Verifica si el Arbol tiene a "right" como null y a "left" con algun valor 
+   * @return (boolean)
+   */
+  private boolean soloHijoPorIzquierda(){
+    return (this.left != null && this.right == null);
+  }
+  
+  /**
+   * Verifica si el Arbol tiene a "left" como null y a "right" con algun valor 
+   * @return (boolean)
+   */
+  private boolean soloHijoPorDerecha(){
+    return (this.left == null && this.right != null);
+  }
+
+  /**
+   * De ser capaz, elimina un arbol hoja
+   * @return (boolean)
+   */
+  private boolean eliminarHoja(){
+    if(this.esHoja()){
+      // Caso de que sea una hoja:
+      this.root = null;
+      return true;
+    }
+
+    return false;
+  }
+  
+  /**
+   * De ser capaz, elimina un arbol el cual tenga un hijo x izquierda 
+   * (este no debe de tener un hijo por derecha)
+   * @return (boolean)
+   */
+  private boolean eliminarSoloHijoPorIzquierda(){
+    if(this.soloHijoPorIzquierda()){
+      // En caso de que tenga nomas un hijo a la izquierda
+      this.auxDeleteNodoConHijoIzquierdo();
+      return true;
+    }
+
+    return false;
+  }
+  
+  /**
+   * De ser capaz, elimina un arbol el cual tenga un hijo x derecha 
+   * (este no debe de tener un hijo por izquierda)
+   * @return (boolean)
+   */
+  private boolean eliminarSoloHijoPorDerecha(){
+    if(this.soloHijoPorDerecha()){
+      // En caso de que tenga nomas un hijo a la derecha
+      this.auxDeleteNodoConHijoDerecho();
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
+   * Dado un numero, si está en el arbol, lo elimina y retorna true. 
+   * Caso contrario retorna false.
+   * @param numEliminar (int) numero a eliminar
+   * @return (boolean)
+   */
+  public boolean delete(int numEliminar){
+    if(this.root == null){
+      return false;
+    }else{
+      if(this.root == numEliminar){ 
+        // Caso de que sea una hoja:
+        if(this.eliminarHoja()){return true;}
+        // Caso de que tenga solo un hijo x izquierda:
+        if(this.eliminarSoloHijoPorIzquierda()){return true;}
+        // Caso de que tenga solo un hijo x derecha:
+        if(this.eliminarSoloHijoPorDerecha()){return true;}
+
+        // En caso de que tenga tanto un hijo x izquierda como x derecha
+        // Reemplazaremos el nodo con el NMI (Nodo Mas Izquierdo) del 
+        // subarbol derecho.
+        ArbolBinarioBusqueda nmi = this.right.getNodoMasIzquierdo();
+        /*
+         * Le asignamos al root mas ancestro del arbol al valor del nim derecho. 
+         * 
+         * NOTA: Al no usar "this", el atributo "root" es el de la primer instancia 
+         * que invocó el metodo "delete".
+         */ 
+        root = nmi.root;
+        
+        // - Verificamos si nmi era hoja o no
+        // - En caso de que sea hoja, se eliminara y listo.
+        // - En caso de que tenga un hijo, la unica posibilidad es que sea por derecha
+        //   ya que "nmi" es el "mas izquierdo".
+        if(nmi.esHoja()){
+          nmi.eliminarHoja();
+        }else{
+          nmi.eliminarSoloHijoPorDerecha();
+        }
+
+        return true;
+      }else{
+        // En caso de que el valor no sea igual al del eliminar, 
+        // seguimos buscando recursivamente.
+        if(this.root > numEliminar){
+          if(this.left != null)
+            return this.left.delete(numEliminar);
+        }else{
+          if(this.right != null)
+            return this.right.delete(numEliminar);
+        }
+        // Si no se encuentra el valor a eliminar en el arbol, se retorna falso.
+        return false;
+      } 
+    }
   }
 
   public int getHeight(){
