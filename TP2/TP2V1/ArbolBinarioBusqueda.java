@@ -19,8 +19,6 @@ public class ArbolBinarioBusqueda {
    * @return value of root
    */
   public int getRoot(){
-    if(this.isEmpty()){return 0;}
-    
     return this.root;
   }
 
@@ -139,19 +137,72 @@ public class ArbolBinarioBusqueda {
     if(!this.isEmpty()){
       arr.add(this.root);
 
-      int leftLength = 0;
-      int rightLength = 0;
+      int leftLength = -1;
+      int rightLength = -1;
 
-      if(this.left != null)
+      // El minimo valor que va a devolver getHeight es de 1
+      if(this.left != null) // (Porq estoy previamente comprobando la nullidad)
         leftLength = this.left.getHeight();
       
-      if(this.right != null)
+      if(this.right != null) // Lo mismo aca
         rightLength = this.right.getHeight();
-
-      if(rightLength > leftLength)
-        this.left.rootFromLongestPath(arr);
-      else
-        this.right.rootFromLongestPath(arr);
+      if(leftLength != -1 || rightLength != -1){ 
+        if(rightLength > leftLength)
+          this.right.rootFromLongestPath(arr);
+        else
+          this.left.rootFromLongestPath(arr);
+      }
     }
   } 
+
+  /**
+   * Lista con todas las hojas
+   * @return
+   */
+  public ArrayList<Integer> getFrontera(){
+    return new ArrayList<Integer>();
+  }
+
+  /**
+   * Retorna el mayor elemento del arbol (El de mas a la derecha)
+   * @return (Integer)
+   */
+  public Integer getMaxElement(){
+    if(this.right == null){
+      return this.root;
+    }else{
+      return this.right.getMaxElement();
+    }
+  }
+
+  /**
+   * Devuelve una lista de todos los elementos del arbol que esten en x nivel.
+   * En caso de que el nivel no sea valido, se rotornará un ArrayList<Integer> vacio
+   * @param level
+   * @return
+   */
+  public ArrayList<Integer> getElemAtLevel(int level){
+    ArrayList<Integer> dev = new ArrayList<Integer>();
+    if(level < 0 || level > this.getHeight()){return dev;}
+
+    return getElemAtLevel(dev, level);
+  }
+  
+  private ArrayList<Integer> getElemAtLevel(ArrayList<Integer> arr, int currentLevel){
+    if(this.root == null){
+      return new ArrayList<Integer>();
+    }else{
+      if(currentLevel == 0){
+        arr.add(this.root);
+      }else{
+        if(this.left != null)
+          this.left.getElemAtLevel(arr, currentLevel-1);
+        if(this.right != null)
+          this.right.getElemAtLevel(arr, currentLevel-1);
+      }
+      
+      return arr;
+    }
+  }
+  
 }

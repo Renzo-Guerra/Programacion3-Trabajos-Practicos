@@ -19,8 +19,14 @@ public class Main {
     System.out.println("PosOrder: ");
     arbol1.printPosOrder();
     System.out.println();
-
+    
     System.out.println("Longest branch: ");
     System.out.println(arbol1.getLongestBranch());    
+    
+    System.out.println("Max element: ");
+    System.out.println(arbol1.getMaxElement()); 
+    
+    System.out.print("Elements al level: ");
+    System.out.println(arbol1.getElemAtLevel(2));
   }
 }
