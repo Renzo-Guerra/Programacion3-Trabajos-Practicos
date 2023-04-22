@@ -160,8 +160,28 @@ public class ArbolBinarioBusqueda {
    * @return
    */
   public ArrayList<Integer> getFrontera(){
-    return new ArrayList<Integer>();
+    ArrayList<Integer> dev = new ArrayList<Integer>();
+
+    return getFrontera(dev);
   }
+
+  private ArrayList<Integer> getFrontera(ArrayList<Integer> arr){
+    if(this.root == null){
+      return new ArrayList<Integer>();
+    }else{
+      if(this.left == null && this.right == null){
+        arr.add(this.root);
+      }else{
+        if(this.left != null)
+          this.left.getFrontera(arr);
+        if(this.right != null)
+          this.right.getFrontera(arr);
+      }
+
+      return arr;
+    }
+  }
+
 
   /**
    * Retorna el mayor elemento del arbol (El de mas a la derecha)
@@ -204,5 +224,5 @@ public class ArbolBinarioBusqueda {
       return arr;
     }
   }
-  
+
 }

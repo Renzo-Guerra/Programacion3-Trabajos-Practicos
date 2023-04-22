@@ -23,6 +23,9 @@ public class Main {
     System.out.println("Longest branch: ");
     System.out.println(arbol1.getLongestBranch());    
     
+    System.out.println("get frontera: ");
+    System.out.println(arbol1.getFrontera());    
+    
     System.out.println("Max element: ");
     System.out.println(arbol1.getMaxElement()); 
     
