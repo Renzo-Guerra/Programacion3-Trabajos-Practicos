@@ -199,7 +199,7 @@ public class ArbolBinarioBusqueda {
   public boolean delete(int numEliminar){
     if(this.root == null){
       return false;
-    }else{
+    }else{ 
       if(this.root == numEliminar){ 
         // Caso de que sea una hoja:
         if(this.eliminarHoja()){return true;}
@@ -326,7 +326,7 @@ public class ArbolBinarioBusqueda {
 
   /**
    * Lista con todas las hojas
-   * @return
+   * @return (ArrayList<Integer>) Lista con las hojas
    */
   public ArrayList<Integer> getFrontera(){
     ArrayList<Integer> dev = new ArrayList<Integer>();
@@ -413,5 +413,50 @@ public class ArbolBinarioBusqueda {
     }
   }
 
-  
+  public ArrayList<Integer> getFronterasMayoresA(int valor){
+<<<<<<< HEAD
+    ArrayList<Integer> hojas = this.getFrontera();   
+    ArrayList<Integer> dev = new ArrayList<Integer>();   
+    
+    for(int i=0;i<hojas.size();i++){
+      if(hojas.get(i) > valor){
+        dev.add(hojas.get(i));
+      }
+    }
+
+    return dev;
+  }
+=======
+    ArrayList<Integer> dev = new ArrayList<Integer>();   
+    
+    dev = this.getFronterasMayoresA(dev, valor);
+    
+    return dev;
+  }
+
+  /**
+   *              16
+   *        4           50
+   *     2    7
+   *  1         9
+   */
+  private ArrayList<Integer> getFronterasMayoresA(ArrayList<Integer> dev, int limitante){
+    if(this.root == null){
+      return new ArrayList<Integer>();
+    }else{
+      if((this.left == null) && (this.right == null) && (this.root > limitante)){
+        dev.add(this.root);
+      }else{
+        //Verificamos que el num actual sea mayor que el numero limitante
+        if((this.left != null) && (this.root > limitante))
+          this.left.getFronterasMayoresA(dev, limitante);
+        if(this.right != null)
+          this.right.getFronterasMayoresA(dev, limitante);
+      }
+
+      return dev;
+    }    
+  }
+
+>>>>>>> 704ac39 (ADD: Ejercicio 3)
 }

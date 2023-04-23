@@ -38,5 +38,13 @@ public class Main {
     arbol1.printPreOrder();
     System.out.println();
     System.out.println("sumatoria: " + arbol1.sumatoria() + "\n");
+
+    System.out.println("get frontera: ");
+    System.out.println(arbol1.getFrontera() + "\n");    
+    int limitante = 5;
+    System.out.println("get fronteras mayores a " + limitante + ": ");
+    System.out.println(arbol1.getFronterasMayoresA(limitante) + "\n");
+
+    
   }
 }
