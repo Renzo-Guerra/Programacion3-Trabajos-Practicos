@@ -394,4 +394,24 @@ public class ArbolBinarioBusqueda {
     }
   }
 
+  /**
+   * Calcula la sumatoria (la suma de todos los  elementos) del arbol.
+   * @return (int) resultado de la sumatoria.
+   */
+  public int sumatoria(){
+    if(this.root == null){
+      return 0;
+    }else{
+      int acum = 0;
+      
+      if(this.left != null)
+        acum += this.left.sumatoria();
+      if(this.right != null)
+        acum += this.root + this.right.sumatoria(); 
+      
+      return acum + this.root;
+    }
+  }
+
+  
 }

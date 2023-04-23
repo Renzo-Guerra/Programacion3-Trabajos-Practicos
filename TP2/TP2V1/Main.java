@@ -34,8 +34,9 @@ public class Main {
     System.out.println("\n");
     int nroEliminar = 13;
     System.out.println("numero " + nroEliminar + " eliminado: " + arbol1.delete(nroEliminar) + "\n");
-    System.out.println("InOrder: ");
-    arbol1.printInOrder();
+    System.out.println("preOrder: ");
+    arbol1.printPreOrder();
     System.out.println();
+    System.out.println("sumatoria: " + arbol1.sumatoria() + "\n");
   }
 }
