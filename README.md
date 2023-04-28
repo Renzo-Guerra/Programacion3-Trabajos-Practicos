@@ -7,3 +7,4 @@ Recordar que estas soluciones son a mi parecer, no estan chequeadas por profesor
 - [Ir al readme del TP1](./TP1/TP1_consignas.md)
 - [Ir al readme del TP2.0](./TP2/TP2V0/TP2V0_consignas.md)
 - [Ir al readme del TP2.1](./TP2/TP2V1/TP2V1_consignas.md)
+- [Ir al readme del TP3](./TP3/TP3_consignas.md)
