@@ -414,19 +414,6 @@ public class ArbolBinarioBusqueda {
   }
 
   public ArrayList<Integer> getFronterasMayoresA(int valor){
-<<<<<<< HEAD
-    ArrayList<Integer> hojas = this.getFrontera();   
-    ArrayList<Integer> dev = new ArrayList<Integer>();   
-    
-    for(int i=0;i<hojas.size();i++){
-      if(hojas.get(i) > valor){
-        dev.add(hojas.get(i));
-      }
-    }
-
-    return dev;
-  }
-=======
     ArrayList<Integer> dev = new ArrayList<Integer>();   
     
     dev = this.getFronterasMayoresA(dev, valor);
@@ -458,5 +445,4 @@ public class ArbolBinarioBusqueda {
     }    
   }
 
->>>>>>> 704ac39 (ADD: Ejercicio 3)
 }
