@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class MainV1 {
   public static void main(String[] args) {
-    GrafoDirigidoV1<Integer> grafo = new GrafoDirigidoV1<>();
+    GrafoDirigido<Integer> grafo = new GrafoDirigido<>();
 
     grafo.agregarVertice(14);
     grafo.agregarVertice(11);

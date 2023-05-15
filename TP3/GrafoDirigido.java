@@ -7,17 +7,15 @@ import java.util.Set;
 
 /**
  * El GrafoDirigidoV1 incorpora internamente un HashMap el cual 
- * de key tiene un vertice, y de value tiene un HashSet<Arco<T>>.
- * 
- * El problema es cuando quiero eliminar un arco, como hago?? 
+ * de key tiene un vertice, y de value tiene un HashSet<Arco<T>>. 
  */
 
-public class GrafoDirigidoV1<T> implements Grafo<T> {
+public class GrafoDirigido<T> implements Grafo<T> {
   // En vez de integer, deveria ser T tambien...
   // Pero como la interfaz grafo en agregarVertice admite un int...
   private HashMap<Integer, HashSet<Arco<T>>> vertices;
 
-  public GrafoDirigidoV1(){ 
+  public GrafoDirigido(){ 
     this.vertices = new HashMap<>();
   }
 

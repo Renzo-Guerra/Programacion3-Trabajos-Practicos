@@ -2,15 +2,17 @@ package TP3;
 
 import java.util.Iterator;
 
-public class Main {
+public class MainV1 {
   public static void main(String[] args) {
-    GrafoDirigidoV2<Integer> grafo = new GrafoDirigidoV2<>();
+    GrafoDirigido<Integer> grafo = new GrafoDirigido<>();
 
     grafo.agregarVertice(14);
     grafo.agregarVertice(11);
     grafo.agregarVertice(22);
     grafo.agregarVertice(25);
 
+    System.out.println("Cantidad total de vertices: " + grafo.cantidadVertices());
+    
     grafo.agregarArco(14, 11, 10);
     grafo.agregarArco(14, 22, 20);
     grafo.agregarArco(14, 25, 30);

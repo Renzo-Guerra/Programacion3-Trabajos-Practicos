@@ -1,6 +1,6 @@
 package TP3;
 
-public class GrafoNoDirigidoV2<T> extends GrafoDirigidoV2<T> {
+public class GrafoNoDirigido<T> extends GrafoDirigido<T> {
   // Al agregar el arco, lo hace en ambas direcciones 
   @Override
   public void agregarArco(int verticeId1, int verticeId2, T etiqueta){
