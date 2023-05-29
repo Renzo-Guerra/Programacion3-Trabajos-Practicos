@@ -32,4 +32,5 @@ public class Nodo<T> {
   public Nodo<T> getNext() {
     return next;
   }
+
 }
