@@ -1,4 +1,4 @@
-package TP3;
+package TP3.grafo;
 
 import java.util.Iterator;
 

@@ -1,4 +1,4 @@
-package TP3;
+package TP3.grafo;
 
 public class GrafoNoDirigido<T> extends GrafoDirigido<T> {
   // Al agregar el arco, lo hace en ambas direcciones 
