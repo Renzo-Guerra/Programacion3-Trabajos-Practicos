@@ -162,4 +162,54 @@ public class GrafoDirigido<T> implements Grafo<T> {
 		return null;
 	}
 
+	public boolean esCiclico(){
+		HashSet<Integer> negros = new HashSet<>(this.cantidadVertices());
+		HashSet<Integer> amarillos = new HashSet<>(this.cantidadVertices());
+		Iterator<Integer> itVertices = this.obtenerVertices();
+		
+		Integer verticeActual;
+		boolean esCiclico = false;
+
+		while(itVertices.hasNext() && !esCiclico){
+			verticeActual = itVertices.next();
+			if(!negros.contains(verticeActual)){
+				esCiclico = esCiclicoAux(verticeActual, negros, amarillos);
+			}
+		}
+		
+		return esCiclico;
+	}
+
+	// Metodo auxiliar recursivo
+	private boolean esCiclicoAux(Integer verticeActual, HashSet<Integer> negros, HashSet<Integer> amarillos){
+		// Obtenemos sus adyacentes
+		Iterator<Integer> itAdyacentes = this.obtenerAdyacentes(verticeActual);
+		Integer adyacenteActual;
+		boolean esCicliclo = false;
+
+		// Se agrega el verticeActual a los que se iniciaron a recorrer
+		// sus adyacentes, pero todavia no se terminaron de recorrer sus adyacentes 
+		amarillos.add(verticeActual); 
+
+		while(itAdyacentes.hasNext()){
+			adyacenteActual = itAdyacentes.next();
+			if(amarillos.contains(adyacenteActual)){
+				return true;
+			}else{
+				if(!negros.contains(adyacenteActual)){
+					esCicliclo = esCiclicoAux(adyacenteActual, negros, amarillos);
+					if(esCicliclo){
+						return true;
+					}
+				}
+			}
+
+		}
+
+		amarillos.remove(verticeActual);
+		negros.add(verticeActual);
+		
+		return false;
+	}
+
 }
